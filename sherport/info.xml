@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding="ISO-8859-1"?>
+<jtlshop3plugin>
+<Name>Sherport Zahlungen</Name>
+<Description>Login und Bezahlen über Sherport</Description>
+<Author>Sherport GmbH</Author>
+<URL>https://sherport.com</URL>
+<XMLVersion>100</XMLVersion>
+<ShopVersion>318</ShopVersion>
+<PluginID>sherport</PluginID>
+<Install>
+	<Version nr="100">
+	    <SQL>sherport.sql</SQL>
+		<CreateDate>2014-12-01</CreateDate>
+	</Version>
+	<Hooks>
+		<Hook id="140">sherport.php</Hook>
+	</Hooks>
+	<Adminmenu>
+		<Settingslink sort="">
+			<Name>Einstellungen</Name>
+			<Setting type="zahl" initialValue="" sort="1" conf="Y">
+				<Name>Betreiber ID</Name>
+				<Description></Description>
+				<ValueName>consumer_id</ValueName>
+			</Setting>
+			<Setting type="selectbox" initialValue="live" sort="2" conf="Y">
+				<Name>Modus</Name>
+				<Description></Description>
+				<ValueName>modus</ValueName>
+				<SelectboxOptions>
+					<Option value="live" sort="1">Live-Modus</Option>
+					<Option value="test" sort="2">Test-Modus</Option>
+				</SelectboxOptions>
+			</Setting>
+			<Setting type="selectbox" initialValue="bottom" sort="3" conf="Y">
+				<Name>Anzeigeort Anmelden in Kasse</Name>
+				<Description></Description>
+				<ValueName>viewport_login</ValueName>
+				<SelectboxOptions>
+					<Option value="top" sort="1">Ueber Positionen</Option>
+					<Option value="bottom" sort="2">Unter Positionen</Option>
+					<Option value="custom" sort="3">Eigene Position</Option>
+				</SelectboxOptions>
+			</Setting>
+			<Setting type="text" initialValue="" sort="4" conf="Y">
+				<Name>Eigener Anzeigeort in Kasse</Name>
+				<Description></Description>
+				<ValueName>viewport_custom</ValueName>
+			</Setting>
+		</Settingslink>
+	</Adminmenu>
+	<PaymentMethod>
+		<Method>
+			<Name>Sherport-Pay</Name>
+			<Sort>1</Sort>
+			<SendMail>1</SendMail>
+			<Provider>Sherport</Provider>
+			<TSCode>OTHER</TSCode>
+			<PreOrder>0</PreOrder>
+			<Soap>0</Soap>
+			<Curl>0</Curl>
+			<Sockets>0</Sockets>
+			<ClassFile>sherport/sherport.class.php</ClassFile>
+			<ClassName>Sherport</ClassName>
+			<TemplateFile>sherport/template/zahlung_normal.tpl</TemplateFile>
+			<MethodLanguage iso="GER">
+				<Name>Sherport</Name>
+				<ChargeName>Sherport</ChargeName>
+				<InfoText>Einfach, schnell und sicher mit Ihrem Smartphone einkaufen.</InfoText>
+			</MethodLanguage>
+		</Method>
+	</PaymentMethod>
+	<Locales>
+		<Variable>
+			<Name>sherport_login_title</Name>
+			<Description>Titel für die "Anmelden mit Sherport-Box"</Description>
+			<VariableLocalized iso="GER">Anmelden mit Sherport</VariableLocalized>
+		</Variable>
+		<Variable>
+			<Name>sherport_login_content</Name>
+			<Description>Text neben dem QR-code beim Login</Description>
+			<VariableLocalized iso="GER">Scannen Sie den angezeigten QR-Code mit der Sherport-App und ersparen sie sich damit die Eingabe Ihrer Daten.</VariableLocalized>
+		</Variable>
+		<Variable>
+			<Name>sherport_title</Name>
+			<Description>Titel</Description>
+			<VariableLocalized iso="GER">Bezahlen mit Sherport</VariableLocalized>
+		</Variable>
+		<Variable>
+			<Name>sherport_content</Name>
+			<Description>Inhalt auf Zahlungsseite</Description>
+			<VariableLocalized iso="GER">Sherport-Pay: Bitte scannen Sie den QR-Code.</VariableLocalized>
+		</Variable>
+		<Variable>
+		    <Name>sherport_scancode</Name>
+		    <Description>Scantext für QR-code</Description>
+		    <VariableLocalized iso="GER">Bitte Scannen</VariableLocalized>
+		</Variable>
+	</Locales>
+	<Boxes>
+		<Box>
+			<Name>Sherport Spenden</Name>
+			<Available>0</Available>
+			<TemplateFile>box_donations.tpl</TemplateFile>
+		</Box>
+	</Boxes>
+</Install>
+</jtlshop3plugin>

@@ -1,0 +1,9 @@
+<Files ipn.php>
+Order Allow,Deny
+Allow from all
+</Files>
+
+<Files feed.php>
+Order Allow,Deny
+Allow from all
+</Files>
